@@ -8,4 +8,7 @@ public interface AuthenticationService {
     JwtAuthenticationResponseDTO signup(SignUpRequestDTO request);
 
     JwtAuthenticationResponseDTO signin(SigninRequestDTO request);
+
+
+
 }
