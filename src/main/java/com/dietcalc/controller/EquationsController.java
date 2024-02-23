@@ -18,18 +18,21 @@ public class EquationsController {
     private final CalculateMetabolicRateService metabolicRateService;
 
     @GetMapping()
-    public ResponseEntity<String> getAboutEquations(@RequestParam("type") String type){
+    public ResponseEntity<String> getAboutEquations(@RequestParam("type") String type) {
         return ResponseEntity.ok().body(AboutEquations.getAboutEquations(Equations.valueOf(type.toUpperCase())));
     }
 
     @GetMapping("/physical-activity-factors")
-    public ResponseEntity<String> getPhysicalActivityFactors(){
+    public ResponseEntity<String> getPhysicalActivityFactors() {
         return ResponseEntity.ok().body(AboutEquations.physicalActivityFactors());
     }
 
     @GetMapping("/calculate")
-    public ResponseEntity<Double> getMetabolicRate(@RequestParam("type") String type){
-        return ResponseEntity.ok().body(this.metabolicRateService.calculateMetabolicRate(Equations.valueOf(type.toUpperCase())));
+    public ResponseEntity<Double> getMetabolicRate(@RequestParam("type") String type,
+                                                   @RequestParam(value = "fatPercent", required = false) Double fatPercent,
+                                                   @RequestParam(value = "physicalActivityFactor", required = false) Double physicalActivityFactor,
+                                                   @RequestParam(value = "calorieDeficit", required = false) Double calorieDeficit) {
+        return ResponseEntity.ok().body(this.metabolicRateService.calculateMetabolicRate(Equations.valueOf(type.toUpperCase()), fatPercent, physicalActivityFactor, calorieDeficit));
     }
 
 }

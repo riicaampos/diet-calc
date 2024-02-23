@@ -35,6 +35,10 @@ public class Person implements Serializable {
 
     private Double metabolicRate;
 
+    private Double fatPercent;
+
+    private Double fatFreeWeight;
+
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;

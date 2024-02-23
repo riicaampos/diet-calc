@@ -6,6 +6,7 @@ import com.dietcalc.entity.User;
 import com.dietcalc.repository.PersonRepository;
 import com.dietcalc.service.PersonService;
 import com.dietcalc.service.UserService;
+import com.dietcalc.utils.Utils;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -34,7 +35,20 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
+    public Double setFatFreeWeigth(Double fatPercent) {
+        User user = this.userService.getByContext();
+        Person person = this.personRepository.findByUser(user);
+
+        person.setFatPercent(fatPercent);
+        person.setFatFreeWeight(Utils.calculateFatFreeWeight(fatPercent, person.getWeight()));
+
+        this.personRepository.save(person);
+
+        return person.getFatFreeWeight();
+    }
+
+    @Override
     public void savePerson(Person person) {
-      this.personRepository.save(person);
+        this.personRepository.save(person);
     }
 }
