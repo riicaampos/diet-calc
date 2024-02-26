@@ -9,6 +9,7 @@ import com.dietcalc.service.UserService;
 import com.dietcalc.utils.Utils;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.PropertyMap;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -26,6 +27,17 @@ public class PersonServiceImpl implements PersonService {
         p.setUser(this.userService.getByContext());
 
         this.personRepository.save(p);
+    }
+
+    @Override
+    public void updatePerson(PersonRequestDTO personRequest) {
+
+        User loggedUser = this.userService.getByContext();
+        Person person = this.personRepository.findByUser(loggedUser);
+
+        person = Utils.castPersonDtoToPerson(personRequest, person);
+        this.personRepository.save(person);
+
     }
 
     @Override

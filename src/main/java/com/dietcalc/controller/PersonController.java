@@ -17,7 +17,10 @@ public class PersonController {
         this.personService.createPerson(person);
     }
 
-    public void setFatFreeWeight(@RequestParam("fatPercent") Double fatPercent) {
 
+    @PutMapping()
+    public void updatePerson(@RequestBody PersonRequestDTO person){
+        this.personService.updatePerson(person);
     }
+
 }

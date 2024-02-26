@@ -7,6 +7,8 @@ public interface PersonService {
 
     void createPerson(PersonRequestDTO person);
 
+    void updatePerson(PersonRequestDTO person);
+
     Person getPersonByUser();
 
     Double setFatFreeWeigth(Double fatPercent);

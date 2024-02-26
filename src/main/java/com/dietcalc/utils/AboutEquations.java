@@ -4,7 +4,7 @@ import com.dietcalc.enums.Equations;
 
 public class AboutEquations {
 
-    public static String getAboutEquations(Equations equations){
+    public static String aboutEquations(Equations equations){
 
         switch (equations){
 
@@ -36,5 +36,14 @@ public class AboutEquations {
                         .append(Utils.getMessage("physical.activity.factors.2more")+"\n").toString();
 
     }
+
+    public static String deficitSuggestions(){
+        return new StringBuilder()
+                .append(Utils.getMessage("deficit.suggestion1")+"\n")
+                .append(Utils.getMessage("deficit.suggestion2")+"\n")
+                .append(Utils.getMessage("deficit.suggestion3")+"\n").toString();
+
+    }
+
 
 }

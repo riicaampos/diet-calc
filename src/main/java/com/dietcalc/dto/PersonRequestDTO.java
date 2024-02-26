@@ -27,6 +27,8 @@ public class PersonRequestDTO implements Serializable {
     private Double weight;
     private Double height;
 
+    private Double fatPercent;
+
     private Sex sex;
 
 }

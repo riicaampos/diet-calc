@@ -19,7 +19,12 @@ public class EquationsController {
 
     @GetMapping()
     public ResponseEntity<String> getAboutEquations(@RequestParam("type") String type) {
-        return ResponseEntity.ok().body(AboutEquations.getAboutEquations(Equations.valueOf(type.toUpperCase())));
+        return ResponseEntity.ok().body(AboutEquations.aboutEquations(Equations.valueOf(type.toUpperCase())));
+    }
+
+    @GetMapping("/deficit-suggestions")
+    public ResponseEntity<String> getDeficitSuggestions(){
+        return ResponseEntity.ok().body(AboutEquations.deficitSuggestions());
     }
 
     @GetMapping("/physical-activity-factors")
