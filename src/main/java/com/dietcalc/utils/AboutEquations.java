@@ -45,5 +45,12 @@ public class AboutEquations {
 
     }
 
+    public static String aboutMacroNutrientsCalorie(){
+        return new StringBuilder()
+                .append(Utils.getMessage("protein.kcal.gr"+"\n"))
+                .append(Utils.getMessage("carb.kcal.gr"+"\n"))
+                .append(Utils.getMessage("fat.kacl.gr"+"\n")).toString();
+    }
+
 
 }

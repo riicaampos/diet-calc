@@ -2,6 +2,7 @@ package com.dietcalc.service.impl;
 
 import com.dietcalc.entity.Person;
 import com.dietcalc.enums.Equations;
+import com.dietcalc.exceptions.BadRequestException;
 import com.dietcalc.service.CalculateMetabolicRateService;
 import com.dietcalc.service.PersonService;
 import com.dietcalc.utils.CalculateEquations;
@@ -44,6 +45,9 @@ public class CalculateMetabolicRateServiceImpl implements CalculateMetabolicRate
                 return metabolicRate;
 
             case CUNNIGHAMDTINSLEY:
+
+                if(fatPercent == null)
+                    throw new BadRequestException(Utils.getMessage("excption.fatpercent.isnull"));
 
                 Double freeFatWeight = Utils.calculateFatFreeWeight(fatPercent, person.getWeight());
 
