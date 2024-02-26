@@ -12,8 +12,12 @@ import lombok.NoArgsConstructor;
 public class DietRequestDTO {
 
     private Double percProtein;
+    private Double grPerKgProt;
 
     private Double percCarb;
-
     private Double percFat;
+
+
+
+
 }

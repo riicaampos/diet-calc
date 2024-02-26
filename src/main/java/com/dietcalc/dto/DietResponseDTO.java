@@ -7,20 +7,45 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
 public class DietResponseDTO {
 
-    private Double qntProteinGr;
-    private Double percProtein;
-    private Double calProtein;
+   private ProteinResponseDTO protein;
+   private CarbResponseDTO carbohydrate;
+   private FatResponseDTO fat;
 
-    private Double qntCarbGr;
-    private Double percCarb;
-    private Double calCarb;
+    private Double metabolicRate;
 
-    private Double qntFatGr;
-    private Double percFat;
-    private Double calFat;
+    public DietResponseDTO(){
+        this.protein = new ProteinResponseDTO();
+        this.carbohydrate = new CarbResponseDTO();
+        this.fat = new FatResponseDTO();
+    }
+
+    @Data
+    public class ProteinResponseDTO{
+        private Double qntProteinGr;
+        private Double qntProteinGrKgBody;
+        private Double percProtein;
+        private Double calProtein;
+    }
+
+    @Data
+    public class CarbResponseDTO{
+        private Double qntCarbGr;
+        private Double qntCarbGrKgBody;
+        private Double percCarb;
+        private Double calCarb;
+    }
+
+    @Data
+    public class FatResponseDTO{
+        private Double qntFatGr;
+        private Double qntFatGrKgBody;
+        private Double percFat;
+        private Double calFat;
+    }
 
 }
+
+
