@@ -2,7 +2,9 @@ package com.dietcalc.service.impl;
 
 import com.dietcalc.dto.DietRequestDTO;
 import com.dietcalc.dto.DietResponseDTO;
+import com.dietcalc.entity.Diet;
 import com.dietcalc.entity.Person;
+import com.dietcalc.repository.DietRepository;
 import com.dietcalc.service.DietService;
 import com.dietcalc.service.PersonService;
 import lombok.RequiredArgsConstructor;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 public class DietServiceImpl implements DietService {
 
     private final PersonService personService;
+    private final DietRepository dietRepository;
 
 
     @Override
@@ -38,6 +41,20 @@ public class DietServiceImpl implements DietService {
 
         response.setMetabolicRate(person.getMetabolicRate());
 
+        this.dietRepository.save(new Diet(response, person));
+
         return response;
     }
+
+    @Override
+    public Diet findByPerson(Person person) {
+        return this.dietRepository.findByPerson(person);
+    }
+
+    @Override
+    public DietResponseDTO findByPersonByDto() {
+        Person person = this.personService.getPersonByUser();
+        return new DietResponseDTO(this.findByPerson(person), person);
+    }
+
 }

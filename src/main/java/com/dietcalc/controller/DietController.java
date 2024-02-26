@@ -29,4 +29,9 @@ public class DietController {
         return ResponseEntity.ok().body(this.dietService.calculateDiet(dietRequestDTO));
     }
 
+    @GetMapping()
+    public ResponseEntity<DietResponseDTO> getMyDiet(){
+       return ResponseEntity.ok().body(dietService.findByPersonByDto());
+    }
+
 }
