@@ -46,4 +46,6 @@ public class NutritionalTable {
 
     @Enumerated(EnumType.STRING)
     private FoodCategories categorie;
+
+    private Double quantity;
 }

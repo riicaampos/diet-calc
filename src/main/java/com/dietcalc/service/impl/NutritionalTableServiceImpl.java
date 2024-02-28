@@ -1,5 +1,6 @@
 package com.dietcalc.service.impl;
 
+import com.dietcalc.dto.NutricionalTableResponseDTO;
 import com.dietcalc.entity.ErrorTable;
 import com.dietcalc.entity.NutritionalTable;
 import com.dietcalc.enums.FoodCategories;
@@ -8,6 +9,7 @@ import com.dietcalc.service.ErrorTableService;
 import com.dietcalc.service.NutritionalTableService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
@@ -23,10 +25,28 @@ public class NutritionalTableServiceImpl implements NutritionalTableService {
 
     private final NutritionalTableRepository nutritionalTableRepository;
     private final ErrorTableService errorTableService;
+    private final ModelMapper modelMapper;
 
     @Override
     public void saveFood(NutritionalTable food) {
        this.nutritionalTableRepository.save(food);
+    }
+
+
+    @Override
+    public List<NutricionalTableResponseDTO> listNutricionalTable() {
+        return this.nutritionalTableRepository.findAll()
+                .stream()
+                .map( f-> modelMapper.map(f, NutricionalTableResponseDTO.class))
+                .toList();
+    }
+
+    @Override
+    public List<NutricionalTableResponseDTO> findFoodByDescription(String description) {
+        return this.nutritionalTableRepository.findByDescriptionContainingIgnoreCase(description)
+                .stream()
+                .map( f -> modelMapper.map(f, NutricionalTableResponseDTO.class))
+                .toList();
     }
 
     @Override
@@ -66,7 +86,7 @@ public class NutritionalTableServiceImpl implements NutritionalTableService {
                 nt.setProtein(Double.parseDouble(splits[11]));
                 nt.setProtein(Double.parseDouble(splits[12]));
 
-               this.nutritionalTableRepository.save(nt);
+                this.nutritionalTableRepository.save(nt);
 
             }catch(Exception e){
                 log.error("Linha com erro: "+line);
