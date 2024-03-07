@@ -42,15 +42,15 @@ public class NutritionalTableService {
                 .toList();
     }
 
-    public void populateTable()  {
+    public void populateTable(String fileName, String categories)  {
 
         BufferedReader br = null;
         String line = "";
 
-        FoodCategories categorie = FoodCategories.FISHANDSEAFOOD;
+        FoodCategories categorie = FoodCategories.valueOf(categories);
 
         try{
-            br = new BufferedReader(new FileReader("./src/LinhasComErroCorrigido.txt"));
+            br = new BufferedReader(new FileReader("./src/"+fileName+".txt"));
             line = br.readLine();
         }catch(Exception e){
             log.error(e.getMessage());
@@ -59,8 +59,6 @@ public class NutritionalTableService {
         while(line != null){
             NutritionalTable nt = new NutritionalTable();
             String[] splits = line.split(";");
-
-            categorie = FoodCategories.valueOf(splits[12]);
 
             try {
 
@@ -72,13 +70,13 @@ public class NutritionalTableService {
                 nt.setEnergyKcal(Double.parseDouble(splits[3]));
                 nt.setEnergyKj(Double.parseDouble(splits[4]));
                 nt.setProtein(Double.parseDouble(splits[5]));
-                nt.setProtein(Double.parseDouble(splits[6]));
-                nt.setProtein(Double.parseDouble(splits[7]));
-                nt.setProtein(Double.parseDouble(splits[8]));
-                nt.setProtein(Double.parseDouble(splits[9]));
-                nt.setProtein(Double.parseDouble(splits[10]));
-                nt.setProtein(Double.parseDouble(splits[11]));
-                nt.setProtein(Double.parseDouble(splits[12]));
+                nt.setLipids(Double.parseDouble(splits[6]));
+                nt.setCholesterol(Double.parseDouble(splits[7]));
+                nt.setCarbohydrate(Double.parseDouble(splits[8]));
+                nt.setDietaryFiber(Double.parseDouble(splits[9]));
+                nt.setAshes(Double.parseDouble(splits[10]));
+                nt.setCalcium(Double.parseDouble(splits[11]));
+                nt.setMagnesium(Double.parseDouble(splits[12]));
 
                 this.nutritionalTableRepository.save(nt);
 
