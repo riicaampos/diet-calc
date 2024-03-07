@@ -4,7 +4,6 @@ import com.dietcalc.dto.DietRequestDTO;
 import com.dietcalc.dto.DietResponseDTO;
 import com.dietcalc.service.DietService;
 import com.dietcalc.utils.AboutEquations;
-import com.dietcalc.utils.Utils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
