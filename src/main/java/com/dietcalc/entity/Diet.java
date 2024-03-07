@@ -6,6 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.util.Date;
 
 @Data
 @Builder
@@ -33,9 +37,17 @@ public class Diet {
     private Double percFat;
     private Double calFat;
 
+    private Long numberOfMeals;
+
     @ManyToOne
     @JoinColumn(name = "person_id", referencedColumnName = "id")
     private Person person;
+
+    @CreationTimestamp
+    private Date createdAt;
+
+    @UpdateTimestamp
+    private Date updatedAt;
 
     public Diet(DietResponseDTO dto, Person person){
         this.qntProteinGr = dto.getProtein().getQntProteinGr();
@@ -52,6 +64,7 @@ public class Diet {
         this.qntFatGrKgBody = dto.getFat().getQntFatGrKgBody();
         this.percFat = dto.getFat().getPercFat();
         this.calFat = dto.getFat().getCalFat();
+        this.numberOfMeals = dto.getNumberOfMeals();
 
         this.person = person;
     }

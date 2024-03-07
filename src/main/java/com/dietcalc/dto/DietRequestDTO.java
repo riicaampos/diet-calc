@@ -17,6 +17,8 @@ public class DietRequestDTO {
     private Double percCarb;
     private Double percFat;
 
+    private Long numberOfMeals;
+
 
 
 

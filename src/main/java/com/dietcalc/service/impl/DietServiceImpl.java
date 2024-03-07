@@ -38,8 +38,11 @@ public class DietServiceImpl implements DietService {
         response.getFat().setCalFat((person.getMetabolicRate()*response.getFat().getPercFat())/100);
         response.getFat().setQntFatGr(response.getFat().getCalFat()/9);
         response.getFat().setQntFatGrKgBody(response.getFat().getQntFatGr()/ person.getWeight());
+        response.setNumberOfMeals(dietRequest.getNumberOfMeals());
 
         response.setMetabolicRate(person.getMetabolicRate());
+
+        this.calculatePerMeal(response);
 
         this.dietRepository.save(new Diet(response, person));
 
@@ -55,6 +58,19 @@ public class DietServiceImpl implements DietService {
     public DietResponseDTO findByPersonByDto() {
         Person person = this.personService.getPersonByUser();
         return new DietResponseDTO(this.findByPerson(person), person);
+    }
+
+    public void calculatePerMeal(DietResponseDTO responseDTO){
+
+        responseDTO.getProteinPerMeal().setQntProteinGr(responseDTO.getProtein().getQntProteinGr() / responseDTO.getNumberOfMeals());
+        responseDTO.getProteinPerMeal().setCalProtein(responseDTO.getProtein().getCalProtein() / responseDTO.getNumberOfMeals());
+
+        responseDTO.getCarbohydratePerMeal().setQntCarbGr(responseDTO.getCarbohydrate().getQntCarbGr() / responseDTO.getNumberOfMeals());
+        responseDTO.getCarbohydratePerMeal().setCalCarb(responseDTO.getCarbohydrate().getCalCarb() / responseDTO.getNumberOfMeals());
+
+        responseDTO.getFatPerMeal().setQntFatGr(responseDTO.getFat().getQntFatGr() / responseDTO.getNumberOfMeals());
+        responseDTO.getFatPerMeal().setCalFat(responseDTO.getFat().getCalFat() / responseDTO.getNumberOfMeals());
+
     }
 
 }

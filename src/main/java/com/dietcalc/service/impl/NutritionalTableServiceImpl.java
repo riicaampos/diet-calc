@@ -58,7 +58,7 @@ public class NutritionalTableServiceImpl implements NutritionalTableService {
         FoodCategories categorie = FoodCategories.FISHANDSEAFOOD;
 
         try{
-            br = new BufferedReader(new FileReader("./src/PescadosFrutosDoMar.txt"));
+            br = new BufferedReader(new FileReader("./src/LinhasComErroCorrigido.txt"));
             line = br.readLine();
         }catch(Exception e){
             log.error(e.getMessage());
@@ -67,6 +67,8 @@ public class NutritionalTableServiceImpl implements NutritionalTableService {
         while(line != null){
             NutritionalTable nt = new NutritionalTable();
             String[] splits = line.split(";");
+
+            categorie = FoodCategories.valueOf(splits[12]);
 
             try {
 

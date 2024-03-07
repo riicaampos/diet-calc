@@ -1,0 +1,24 @@
+13; Biscoito salgado cream cracker;4.1;432;1806;10.1;14.4;0.0;68.7;2.5;2.7;20;40;CEREALSANDDERIVATIVES
+45; Milho verde enlatado drenado;76.2;98;408;3.2;2.4;0.0;17.1;4.6;1.1;2;20;CEREALSANDDERIVATIVES
+24; Cereais mistura para vitamina trigo cevada e aveia;4.4;381;1595;8.9;2.1;0.0;81.6;5.0;3.0;584;72;CEREALSANDDERIVATIVES
+522; Chantilly spray com gordura vegetal; 55.1; 315; 1318; 0.5; 27.3; 0.0; 16.9; 0.0; 0.2; 2; 1;DRINKS
+524; Maionese tradicional com ovos; 58.4; 302; 1264; 0.6; 30.5; 42; 7.9; 0.0; 2.6; 3; 1 ;DRINKS
+523; Leite de coco; 78.0; 166; 695; 1.0; 18.4; 0.0; 2.2; 0.7; 0.4; 6; 17 ;DRINKS
+474; Cerveja pilsen;  92.4; 41; 170; 0.6; 0.0; 0.0; 3.3; 0.0; 0.1; 5; 7 ;DRINKS
+520; Azeitona preta conserva; 68.5; 194; 812; 1.2; 20.3; 0.0; 5.5; 4.6; 4.5; 59; 5 ;DRINKS
+521; Azeitona verde conserva; 76.3; 137; 573; 0.9; 14.2; 0.0; 4.1; 3.8; 4.5; 46; 4 ;DRINKS
+301; Merluza filé assado;70.7;122;510;26.6;0.9;91;0.0;0.0;1.2;36;20;FISHANDSEAFOOD
+280; Bacalhau salgado refogado;65.9;140;584;24.0;3.6;112;1.2;0.0;5.3;59;15;FISHANDSEAFOOD
+292; Corvina do mar crua;79.4;94;392;18.6;1.6;67;0.0;0.0;1.1;0.0;24;FISHANDSEAFOOD
+321; Sardinha inteira crua;76.6;114;477;21.1;2.7;61;0.0;0.0;1.6;167;29;FISHANDSEAFOOD
+435; Porco pernil assado; 49.3; 262; 1097; 32.1; 13.9; 110; 0.0; 0.0; 1.4; 18; 27;MEATANDDERIVATIVES
+383; Carne bovina picanha sem gordura grelhada;54.6; 238; 998; 31.9; 11.3; 100; 0.0; 0.0; 1.2; 4; 25;MEATANDDERIVATIVES
+539; Feijão tropeiro mineiro; 61.7; 152; 634; 10.2; 6.8; 68; 19.6; 3.6; 1.8; 41; 36;PREPAREDFOODS 
+551; Tapioca com manteiga; 24.9; 348; 1455; 0.1; 10.9; 31; 63.6; 0.0; 0.5; 30; 3;PREPAREDFOODS
+145; Pimentão vermelho cru;92.9;23;97;1.0;0.1;0.0;5.5;1.6;0.4;6;11;VEGETABLESANDDERIVATIVES
+144; Pimentão verde cru;93.5;21;89;1.1;0.2;0.0;4.9;2.6;0.4;9;8;VEGETABLESANDDERIVATIVES
+143; Pimentão amarelo cru;91.9;28;117;1.2;0.4;0.0;6.0;1.9;0.5;10;11;VEGETABLESANDDERIVATIVES
+139; Palmito pupunha em conserva;89.4;29;123;2.5;0.5;0.0;5.5;2.6;2.1;32;25;VEGETABLESANDDERIVATIVES
+90; Batata frita tipo chips industrializada;2.7;543;2271;5.6;36.6;0.0;51.2;2.5;3.9;12;24;VEGETABLESANDDERIVATIVES
+66; Abóbora menina brasileira crua;95.7;14;57;0.6;s0.0;0.0;3.3;1.2;0.4;9;4;VEGETABLESANDDERIVATIVES
+231; Manga Tommy Atkins;crua;85.8;51;212;0.9;0.2;0.0;12.8;2.1;0.3;8;7;VEGETABLESANDDERIVATIVES
