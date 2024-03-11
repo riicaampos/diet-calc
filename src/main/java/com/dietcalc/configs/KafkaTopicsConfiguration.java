@@ -28,4 +28,9 @@ public class KafkaTopicsConfiguration {
         return new NewTopic("teste-ricardo", 1, (short) 1);
     }
 
+    @Bean
+    public NewTopic topic2() {
+        return new NewTopic("person", 1, (short) 1);
+    }
+
 }

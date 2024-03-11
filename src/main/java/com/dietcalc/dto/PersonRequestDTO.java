@@ -31,4 +31,6 @@ public class PersonRequestDTO implements Serializable {
 
     private Sex sex;
 
+    private Long userId;
+
 }

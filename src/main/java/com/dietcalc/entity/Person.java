@@ -51,4 +51,7 @@ public class Person implements Serializable {
     @UpdateTimestamp
     private Date updatedAt;
 
+    @Transient
+    private Long userId;
+
 }

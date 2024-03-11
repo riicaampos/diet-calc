@@ -1,17 +1,13 @@
 package com.dietcalc.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(of = {"email","password"})
 public class SignUpRequestDTO {
-    private String firstName;
-    private String lastName;
     private String email;
     private String password;
 }
