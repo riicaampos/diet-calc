@@ -1,14 +1,13 @@
 package com.dietcalc.utils;
 
-import com.itextpdf.text.List;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.parser.PdfTextExtractor;
+import lombok.extern.slf4j.Slf4j;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
+@Slf4j
 public class ImportTacoTable {
 
     public static void main(String[] args) throws IOException {
@@ -19,11 +18,18 @@ public class ImportTacoTable {
 
 
         int pages = reader.getNumberOfPages();
-        for (int i = 1; i <= pages; i++) {
-            writer.println(PdfTextExtractor.getTextFromPage(reader, i));
+
+        try {
+            for (int i = 1; i <= pages; i++) {
+                writer.println(PdfTextExtractor.getTextFromPage(reader, i));
+            }
+        } catch (Exception e) {
+            log.error("Erro ao importar da tabela: " + e.getMessage());
+        } finally {
+            reader.close();
+            writer.close();
         }
-        reader.close();
-        writer.close();
+
 
     }
 }

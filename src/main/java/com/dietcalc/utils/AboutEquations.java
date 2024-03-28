@@ -4,6 +4,8 @@ import com.dietcalc.enums.Equations;
 
 public class AboutEquations {
 
+    private AboutEquations(){}
+
     public static String aboutEquations(Equations equations){
 
         switch (equations){

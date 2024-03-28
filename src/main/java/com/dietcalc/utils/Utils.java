@@ -13,6 +13,8 @@ import java.util.TimeZone;
 
 public class Utils {
 
+    private Utils(){}
+
     public static Integer calculateAgeBetweenDates(Date personBirthDate){
         LocalDate nowDate = LocalDate.now();
 

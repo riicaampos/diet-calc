@@ -1,10 +1,7 @@
 package com.dietcalc.dto;
 
 import com.dietcalc.enums.Sex;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,6 +15,9 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PersonRequestDTO implements Serializable {
+
+    @JsonIgnore
+    private Long id;
 
     private String firstName;
     private String lastName;

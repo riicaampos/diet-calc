@@ -17,7 +17,7 @@ public class CalculateMetabolicRateService {
     public Double calculateMetabolicRate(Equations equations, Double fatPercent, Double physicalActivityFactor, Double calorieDeficit) {
 
         Person person = this.personService.getPersonByUser();
-        Double metabolicRate = 0.0;
+        Double metabolicRate;
 
         Integer age = Utils.calculateAgeBetweenDates(person.getBirthDate());
 
@@ -25,7 +25,7 @@ public class CalculateMetabolicRateService {
 
             case FAOOMS:
 
-                metabolicRate = CalculateEquations.calculateFaoOms(person, age, fatPercent, physicalActivityFactor, calorieDeficit);
+                metabolicRate = CalculateEquations.calculateFaoOms(person, age, physicalActivityFactor, calorieDeficit);
 
                 person.setMetabolicRate(metabolicRate);
                 this.personService.savePerson(person);

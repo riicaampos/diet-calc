@@ -9,11 +9,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
-import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.annotation.TopicPartition;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -24,28 +22,29 @@ public class PersonService {
     private final ModelMapper modelMapper;
     private final ObjectMapper objectMapper;
     private final UserService userService;
-    private final KafkaTemplate<String, String> kafkaTemplate;
 
-    public void createPerson(PersonRequestDTO person) {
-        String personJson = "";
-        try{
-            person.setUserId(this.userService.getByContext().getId());
-            personJson = objectMapper.writeValueAsString(person);
-        }catch(Exception e){
-            log.error(e.getMessage());
-        }
-        log.info("Enviando pessoa para a fila..."+personJson);
-        kafkaTemplate.send("person", personJson);
+    public void createPerson(PersonRequestDTO personDTO) {
+       Person person = modelMapper.map(personDTO, Person.class);
+       User loggedUser = this.userService.getByContext();
+       person.setUser(loggedUser);
+       this.personRepository.save(person);
     }
 
-    public void updatePerson(PersonRequestDTO personRequest) {
+    public Person updatePerson(PersonRequestDTO personRequest) {
 
         User loggedUser = this.userService.getByContext();
         Person person = this.personRepository.findByUser(loggedUser);
 
         person = Utils.castPersonDtoToPerson(personRequest, person);
-        this.personRepository.save(person);
+        return this.personRepository.save(person);
 
+    }
+
+    public Person updatePerson(PersonRequestDTO personRequest, User loggedUser) {
+        Person person = this.personRepository.findByUser(loggedUser);
+
+        person = Utils.castPersonDtoToPerson(personRequest, person);
+        return this.personRepository.save(person);
     }
 
     public Person getPersonByUser() {
@@ -65,21 +64,16 @@ public class PersonService {
         return person.getFatFreeWeight();
     }
 
-    public void savePerson(Person person) {
-        this.personRepository.save(person);
+    public Person savePerson(Person person) {
+        return this.personRepository.save(person);
     }
 
-    @KafkaListener(topicPartitions
-            = @TopicPartition(topic = "person", partitions = { "0", "1" }))
-    public void listenToPersonTopic(@Payload String personJson) {
-        log.info("recuperando e salvando pessoa....");
-        try{
-            Person person = objectMapper.readValue(personJson, Person.class);
-            person.setUser(this.userService.findById(person.getUserId()));
-            this.personRepository.save(person);
-        }catch(Exception e){
-            log.info("erro"+e.getMessage());
-            e.printStackTrace();
-        }
+
+    public List<Person> getAllPersons(){
+        return this.personRepository.findAll();
+    }
+
+    public Person findById(Long id){
+        return this.personRepository.findById(id).orElse(null);
     }
 }
