@@ -28,6 +28,7 @@ public class UserService {
         };
     }
 
+
     public Authentication getAuthentication() {
         return SecurityContextHolder.getContext().getAuthentication();
     }
